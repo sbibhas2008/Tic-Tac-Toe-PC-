@@ -3,6 +3,8 @@ package project.backend;
 public class Board {
 	
 	private int[][] grid;
+	private int lastX;
+	private int lastY;
 	
 	public Board () {
 		// initialise the grid all to -1 (empty)
@@ -21,7 +23,7 @@ public class Board {
 		grid[x][y] = 0;
 	}
 	
-	public boolean checkCurrSate(int x, int y) {
+	public boolean checkCurrSate() {
 		
 		
 	}

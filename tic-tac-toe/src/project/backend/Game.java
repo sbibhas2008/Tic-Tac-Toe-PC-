@@ -8,6 +8,11 @@ public class Game {
 		this.board = b;
 	}
 	
+	public void terminateGame () {
+		if (board.checkCurrSate()) {
+			System.out.println("Stop");
+		}
+	}
 	
 
 }
