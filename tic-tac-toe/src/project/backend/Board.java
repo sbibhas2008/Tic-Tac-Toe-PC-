@@ -24,7 +24,7 @@ public class Board {
 	}
 	
 	public boolean checkCurrSate() {
-		
+		return false;
 		
 	}
 	
