@@ -24,7 +24,9 @@ public class Board {
 	private boolean validCoordinate(int x, int y) {
 		if (x > 2 || x < 0 || y > 2 || y < 0) {
 			return false;
-		} else {
+		} 
+		else if (grid[x][y] != -1) return false;
+		else {
 			return true;
 		}
 	}
@@ -47,7 +49,7 @@ public class Board {
 	 * return value: true if game can continue
 	 * 				 false if game is over
 	 */
-	public boolean checkCurrSate() {
+	public boolean checkCurrSate(int x, int y) {
 
 		// temporary to remove error highlights
 		boolean free = false;
