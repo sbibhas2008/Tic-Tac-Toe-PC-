@@ -23,7 +23,9 @@ public class Board {
 		if (x > 2 || x < 0 || y > 2 || y < 0) {
 			return false;
 		} 
-		else if (grid[x][y] != -1) return false;
+		else if (grid[x][y] != -1) {
+			return false;
+		}
 		else {
 			return true;
 		}
@@ -62,6 +64,10 @@ public class Board {
 		}
 		boolean won = false;
 		// check win condition
+		if (checkStraight(x,y) || checkDiagonal(x,y)) {
+			won = true;
+		}
+		
 		if (won || (!free)) {
 			return false;
 		}
@@ -69,8 +75,64 @@ public class Board {
 		
 	}
 	
-	public void checkDiagonal(int x, int y) {
+	private boolean checkStraight(int x, int y) {
+		int current = grid[x][y];
+		//vertical
+		boolean match = true;
+		int c = 0;
+		int i = x;
+		while (c < 3 && match) {
+			i = i % 3;
+			if (grid[i][y] != current) {
+				match = false;
+			}
+			c++;
+			i++;
+		}
 		
+		//horizontal
+		if (match) return true;
+		match = true;
+		c = 0;
+		int j = y;
+		while (c < 3 && match) {
+			j = j % 3;
+			if (grid[x][j] != current) {
+				match = false;
+			}
+			c++;
+			j++;
+		}
+		return match;
+	}
+	
+	private boolean checkDiagonal(int x, int y) {
+		if (y == 1 && (x == 0 || y == 2)) {
+			return false;
+		} else if (x == 1 && (y == 0 || y == 1)) {
+			return false;
+		}
+		int current = grid[x][y];
+		boolean match = true;
+		for (int i = 0; i < 3; i++) {
+			if (grid[i][i] != current) {
+				match = false;
+				break;
+			}
+		}
+		if (! match) {
+			match = true;
+			int i = 2;
+			int j = 0;
+			while (i >= 0 && match) {
+				if (grid[i][j] != current) {
+					match = false;
+				}
+				i -= 1;
+				j += 1;
+			}
+		}
+		return match;
 	}
 	
 
