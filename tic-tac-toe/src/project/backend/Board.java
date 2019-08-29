@@ -2,10 +2,8 @@ package project.backend;
 
 public class Board {
 	
-	private int[][] grid;
-	private int lastX;
-	private int lastY;
-	
+	private int[][] grid = new int [3][3];
+		
 	public Board () {
 		/*   grid
 		 * 00 01 02
