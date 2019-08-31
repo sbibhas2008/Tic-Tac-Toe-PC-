@@ -1,8 +1,11 @@
 package project.backend;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Board {
 	
-	private int[][] grid = new int [3][3];
+	private IntegerProperty[][] grid = new IntegerProperty [3][3];
 		
 	public Board () {
 		/*   grid
@@ -14,7 +17,7 @@ public class Board {
 		// initialize the grid all to -1 (empty)
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				grid[i][j] = -1;
+				grid[i][j] = new SimpleIntegerProperty(-1);
 			}
 		}
 	}
@@ -24,7 +27,7 @@ public class Board {
 			System.out.println("in false");
 			return false;
 		} 
-		else if (grid[x][y] != -1) {
+		else if (grid[x][y].get() != -1) {
 			return false;
 		}
 		else {
@@ -35,7 +38,7 @@ public class Board {
 	public boolean setX (int x, int y) {
 		// check valid co-ordinates
 		if (validCoordinate(x,y)) {
-			grid[x][y] = 1;
+			grid[x][y].setValue(1);
 			return true;
 		}
 		return false;
@@ -44,7 +47,7 @@ public class Board {
 	public boolean setO (int x, int y) {
 		// check valid co-ordinates
 		if (validCoordinate(x,y)) {
-			grid[x][y] = 0;
+			grid[x][y].setValue(0);
 			return true;
 		}
 		return false;
@@ -60,7 +63,7 @@ public class Board {
 		boolean free = false;
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				if (grid[i][j] == -1) {
+				if (grid[i][j].get() == -1) {
 					free = true;
 					break;
 				}
@@ -81,7 +84,7 @@ public class Board {
 	}
 	
 	private boolean checkStraight(int x, int y) {
-		int current = grid[x][y];
+		int current = grid[x][y].get();
 		if (current == -1) return false;
 		//vertical
 		boolean match = true;
@@ -89,7 +92,7 @@ public class Board {
 		int i = x;
 		while (c < 3 && match) {
 			i = i % 3;
-			if (grid[i][y] != current) {
+			if (grid[i][y].get() != current) {
 				match = false;
 			}
 			c++;
@@ -103,7 +106,7 @@ public class Board {
 		int j = y;
 		while (c < 3 && match) {
 			j = j % 3;
-			if (grid[x][j] != current) {
+			if (grid[x][j].get() != current) {
 				match = false;
 			}
 			c++;
@@ -113,7 +116,7 @@ public class Board {
 	}
 	
 	private boolean checkDiagonal(int x, int y) {
-		int current = grid[x][y];
+		int current = grid[x][y].get();
 		if (current == -1) return false;
 		if (y == 1 && (x == 0 || y == 2)) {
 			return false;
@@ -122,7 +125,7 @@ public class Board {
 		}
 		boolean match = true;
 		for (int i = 0; i < 3; i++) {
-			if (grid[i][i] != current) {
+			if (grid[i][i].get() != current) {
 				match = false;
 				break;
 			}
@@ -132,7 +135,7 @@ public class Board {
 			int i = 2;
 			int j = 0;
 			while (i >= 0 && match) {
-				if (grid[i][j] != current) {
+				if (grid[i][j].get() != current) {
 					match = false;
 				}
 				i -= 1;
@@ -140,6 +143,10 @@ public class Board {
 			}
 		}
 		return match;
+	}
+	
+	public IntegerProperty getproperty (int x, int y) {
+		return grid[x][y];
 	}
 	
 

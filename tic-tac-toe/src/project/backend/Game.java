@@ -1,11 +1,12 @@
 package project.backend;
 
+import javafx.beans.property.IntegerProperty;
+
 public class Game {
 	
 	private Board board;
-	
-	public Game (Board b) {
-		this.board = b;
+	public Game () {
+		this.board = new Board();
 	}
 	
 	public void terminateGame (int x, int y) {
@@ -24,6 +25,10 @@ public class Game {
 		boolean check = board.setO(x, y);
 		terminateGame(x, y);
 		return check;
+	}
+	
+	public IntegerProperty getproperty (int x, int y) {
+		return board.getproperty(x, y);
 	}
 	
 

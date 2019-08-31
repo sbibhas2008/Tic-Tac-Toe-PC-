@@ -10,7 +10,7 @@ public class TestClass {
 	@Test
 	public void checkBoardDiagonal() {
 		Board board = new Board();
-		Game game = new Game(board);
+		Game game = new Game();
 		assert board.checkCurrSate(0, 0) == false;
 		assert game.setO(0, 0) == true;
 		assert game.setX(0, 0) == false;
@@ -22,7 +22,7 @@ public class TestClass {
 	@Test
 	public void checkBoardStraight() {
 		Board board = new Board();
-		Game game = new Game(board);
+		Game game = new Game();
 		assert board.checkCurrSate(0, 0) == false;
 		assert game.setO(0, 0) == true;
 		assert game.setX(0, 0) == false;
@@ -34,7 +34,7 @@ public class TestClass {
 	@Test
 	public void checkBoardDiagonalOpposite() {
 		Board board = new Board();
-		Game game = new Game(board);
+		Game game = new Game();
 		assert board.checkCurrSate(0, 0) == false;
 		assert game.setO(2, 0) == true;
 		assert game.setX(2, 0) == false;
