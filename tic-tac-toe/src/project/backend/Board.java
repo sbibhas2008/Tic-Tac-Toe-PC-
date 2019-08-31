@@ -21,6 +21,7 @@ public class Board {
 	
 	private boolean validCoordinate(int x, int y) {
 		if (x > 2 || x < 0 || y > 2 || y < 0) {
+			System.out.println("in false");
 			return false;
 		} 
 		else if (grid[x][y] != -1) {
@@ -31,18 +32,22 @@ public class Board {
 		}
 	}
 	
-	public void setX (int x, int y) {
+	public boolean setX (int x, int y) {
 		// check valid co-ordinates
 		if (validCoordinate(x,y)) {
 			grid[x][y] = 1;
+			return true;
 		}
+		return false;
 	}
 	
-	public void setO (int x, int y) {
+	public boolean setO (int x, int y) {
 		// check valid co-ordinates
 		if (validCoordinate(x,y)) {
 			grid[x][y] = 0;
+			return true;
 		}
+		return false;
 	}
 	
 	/*
@@ -68,7 +73,7 @@ public class Board {
 			won = true;
 		}
 		
-		if (won || (!free)) {
+		if (!won || (!free)) {
 			return false;
 		}
 		return true;
@@ -77,6 +82,7 @@ public class Board {
 	
 	private boolean checkStraight(int x, int y) {
 		int current = grid[x][y];
+		if (current == -1) return false;
 		//vertical
 		boolean match = true;
 		int c = 0;
@@ -107,12 +113,13 @@ public class Board {
 	}
 	
 	private boolean checkDiagonal(int x, int y) {
+		int current = grid[x][y];
+		if (current == -1) return false;
 		if (y == 1 && (x == 0 || y == 2)) {
 			return false;
 		} else if (x == 1 && (y == 0 || y == 1)) {
 			return false;
 		}
-		int current = grid[x][y];
 		boolean match = true;
 		for (int i = 0; i < 3; i++) {
 			if (grid[i][i] != current) {

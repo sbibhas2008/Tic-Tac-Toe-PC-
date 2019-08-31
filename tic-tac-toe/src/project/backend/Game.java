@@ -14,14 +14,16 @@ public class Game {
 		}
 	}
 	
-	public void setX(int x, int y) {
-		board.setX(x, y);
+	public boolean setX(int x, int y) {
+		boolean check = board.setX(x, y);
 		terminateGame(x, y);
+		return check;
 	}
 	
-	public void setO(int x, int y) {
-		board.setO(x, y);
+	public boolean setO(int x, int y) {
+		boolean check = board.setO(x, y);
 		terminateGame(x, y);
+		return check;
 	}
 	
 
