@@ -35,15 +35,17 @@ public class Game {
 			boolean see = board.setO(x, y);
 			if (see) {
 				check = board.getCoordinate(x, y);
+				moves++;
 			}
 		}
 		else {
 			boolean see = board.setX(x, y);
 			if (see) {
 				check = board.getCoordinate(x, y);
+				moves++;
 			}
 		}
-		moves++;
+		
 		terminateGame(x, y);
 		return check;
 	}
