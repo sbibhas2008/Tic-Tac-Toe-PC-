@@ -44,6 +44,7 @@ public class Game {
 			}
 		}
 		moves++;
+		terminateGame(x, y);
 		return check;
 	}
 	
