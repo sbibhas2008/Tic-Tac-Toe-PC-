@@ -31,8 +31,17 @@ public class GameController {
     public void initialize() {
     	for (int i = 0; i < 3; i++) {
     		for (int j = 0;  j < 3; j++) {
-    			ImageView img = new ImageView(new Image("/cross.png"));
-    			Board.add(img, i, j, 2, 1);
+    			if (i == j) {
+    				ImageView img1 = new ImageView(new Image("/nought.png"));
+    				img1.setFitHeight(50);
+    				img1.setFitWidth(50);
+    				Board.add(img1, i, j, 2, 1);
+    			} else {
+    				ImageView img2 = new ImageView(new Image("/cross.png"));
+    				img2.setFitHeight(50);
+    				img2.setFitWidth(50);
+    				Board.add(img2, i, j, 2, 1);
+    			}
     		}
     		
     	}
