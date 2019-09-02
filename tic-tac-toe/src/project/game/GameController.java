@@ -44,19 +44,6 @@ public class GameController {
     public void initialize() {
     	for (int i = 0; i < 3; i++) {
     		for (int j = 0;  j < 3; j++) {
-<<<<<<< HEAD
-    			if (i == j) {
-    				ImageView img1 = new ImageView(new Image("/nought.png"));
-    				img1.setFitHeight(50);
-    				img1.setFitWidth(50);
-    				Board.add(img1, i, j, 2, 1);
-    			} else {
-    				ImageView img2 = new ImageView(new Image("/cross.png"));
-    				img2.setFitHeight(50);
-    				img2.setFitWidth(50);
-    				Board.add(img2, i, j, 2, 1);
-    			}
-=======
     			ImageView img = new ImageView(blank);
     			img.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
@@ -79,7 +66,6 @@ public class GameController {
     			GridPane.setHalignment(img, HPos.CENTER); // To align horizontally in the cell
     			GridPane.setValignment(img, VPos.CENTER);
     			this.Board.add(img, i, j);
->>>>>>> bbec20bead861b1ad1861f84f5bff927d27e02e6
     		}
     		
     	}
