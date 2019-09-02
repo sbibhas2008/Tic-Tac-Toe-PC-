@@ -149,6 +149,10 @@ public class Board {
 		return grid[x][y];
 	}
 	
+	public int getCoordinate(int x, int y) {
+		return grid[x][y].get();
+	}
+	
 
 
 }
