@@ -54,10 +54,12 @@ public class Board {
 	}
 	
 	/*
-	 * return value: true if game can continue
-	 * 				 false if game is over
+	 * return value:
+	 * 				 1 if game won by X
+	 * 				 0 if game won by O
+	 * 				-1 otherwise
 	 */
-	public boolean checkCurrSate(int x, int y) {
+	public int checkCurrSate(int x, int y) {
 
 		// temporary to remove error highlights
 		boolean free = false;
@@ -77,9 +79,9 @@ public class Board {
 		}
 		
 		if (!won || (!free)) {
-			return false;
+			return -1;
 		}
-		return true;
+		return grid[x][y].get();
 		
 	}
 	
