@@ -30,15 +30,6 @@ public class GameController {
     	circle = new Image("/circle.png");
     }
 
-//    @FXML
-//    void mouseEntered(MouseEvent event) {
-//    	 Node source = (Node)event.getSource() ;
-//         Integer colIndex = GridPane.getColumnIndex(source);
-//         Integer rowIndex = GridPane.getRowIndex(source);
-//         System.out.println(source);
-//         System.out.println(colIndex);
-//         //System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.toString(), rowIndex.toString());
-//    }
     
     @FXML
     public void initialize() {
@@ -49,7 +40,11 @@ public class GameController {
 
     			     @Override
     			     public void handle(MouseEvent event) {
-    			    	 ImageView source = (ImageView)event.getSource() ;
+    			    	 changeImage(event);
+    			     }
+
+					private void changeImage(MouseEvent event) {
+						ImageView source = (ImageView)event.getSource() ;
     			         Integer colIndex = GridPane.getColumnIndex(source);
     			         Integer rowIndex = GridPane.getRowIndex(source);
     			         int move = game.setMove(colIndex, rowIndex);
@@ -61,7 +56,7 @@ public class GameController {
     			         }
     			         System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
     			         event.consume();
-    			     }
+					}
     			});
     			GridPane.setHalignment(img, HPos.CENTER); // To align horizontally in the cell
     			GridPane.setValignment(img, VPos.CENTER);
