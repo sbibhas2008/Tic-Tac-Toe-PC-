@@ -60,14 +60,23 @@ public class GameController {
     			         if (game.getAi() != null) {
     			        	 move = game.setMove(0, 0);
         			         if (move.get(2) == 0) {
-        			        	 getBoard().add(new ImageView(circle), move.get(0), move.get(1));
+        			        	 ImageView img = new ImageView(circle);
+        			        	 getBoard().add(img, move.get(0), move.get(1));
+        			        	 adjustImage(img);
         			         }
         			         else if (move.get(2) == 1) {
-        			        	 getBoard().add(new ImageView(cross), move.get(0), move.get(1));
+        			        	 ImageView img = new ImageView(cross);
+        			        	 getBoard().add(img, move.get(0), move.get(1));
+        			        	 adjustImage(img);
         			         }
     			         }
     			         game.showBoard();
     			         event.consume();
+					}
+
+					private void adjustImage(ImageView img) {
+						GridPane.setHalignment(img, HPos.CENTER);
+						 GridPane.setValignment(img, VPos.CENTER);
 					}
     			});
     			GridPane.setHalignment(img, HPos.CENTER); // To align horizontally in the cell
