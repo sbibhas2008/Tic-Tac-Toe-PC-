@@ -27,7 +27,7 @@ public class GameController {
     private Image circle;
     
     public GameController () {
-    	game = new Game(1);
+    	
     	blank = new Image("/blank.png");
     	cross = new Image("/cross.png");
     	circle = new Image("/circle.png");
@@ -57,12 +57,14 @@ public class GameController {
     			         else if (move.get(2) == 1) {
     			        	 source.setImage(cross);
     			         }
-    			         move = game.setMove(0, 0);
-    			         if (move.get(2) == 0) {
-    			        	 getBoard().add(new ImageView(circle), move.get(0), move.get(1));
-    			         }
-    			         else if (move.get(2) == 1) {
-    			        	 getBoard().add(new ImageView(cross), move.get(0), move.get(1));
+    			         if (game.getAi() != null) {
+    			        	 move = game.setMove(0, 0);
+        			         if (move.get(2) == 0) {
+        			        	 getBoard().add(new ImageView(circle), move.get(0), move.get(1));
+        			         }
+        			         else if (move.get(2) == 1) {
+        			        	 getBoard().add(new ImageView(cross), move.get(0), move.get(1));
+        			         }
     			         }
     			         game.showBoard();
     			         event.consume();
@@ -84,6 +86,15 @@ public class GameController {
     
     public GridPane getBoard() {
     	return this.Board;
+    }
+    
+    public void setMode(int mode) {
+    	if (mode == -1) {
+    		game = new Game();
+    	}
+    	else {
+    		game = new Game(mode);
+    	}
     }
     
     

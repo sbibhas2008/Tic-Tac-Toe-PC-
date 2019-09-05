@@ -7,18 +7,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
-
 public class Main extends Application {
+	
+		
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-		
-	        FXMLLoader loader = new FXMLLoader(getClass().getResource("scene.fxml"));
-	        Parent root = loader.load();
-	        Scene scene = new Scene(root);
-
-	        primaryStage.setScene(scene);
-	        primaryStage.show();
+			StartScreen startScreen = new StartScreen(primaryStage);
+			GameScreen gameScreen = new GameScreen(primaryStage);
+			startScreen.getController().setGameScreen(gameScreen);
+			startScreen.start();
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -27,4 +26,6 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	
 }

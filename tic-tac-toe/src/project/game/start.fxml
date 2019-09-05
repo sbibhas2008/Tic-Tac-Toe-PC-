@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TitledPane animated="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Tic Tac Toe" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.202-ea">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="AiBtn" layoutX="118.0" layoutY="251.0" mnemonicParsing="false" onAction="#againstAI" text="1 Player" />
+            <RadioButton fx:id="mediumBtn" layoutX="113.0" layoutY="161.0" mnemonicParsing="false" onAction="#handleMediumBtn" text="Medium" />
+            <RadioButton fx:id="impossibleBtn" layoutX="113.0" layoutY="198.0" mnemonicParsing="false" onAction="#handleImpossibleBtn" text="Impossible" />
+            <RadioButton fx:id="easyBtn" layoutX="113.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleEasyBtn" text="Easy" />
+            <Button fx:id="playerBtn" layoutX="375.0" layoutY="251.0" mnemonicParsing="false" onAction="#againstPlayer" text="2 Player" />
+            <ToggleButton fx:id="toggleBtn" layoutX="110.0" layoutY="80.0" mnemonicParsing="false" onAction="#playFirst" text="First Move" />
+         </children></AnchorPane>
+  </content>
+</TitledPane>
