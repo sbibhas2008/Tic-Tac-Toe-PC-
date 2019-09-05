@@ -61,15 +61,22 @@ public class Board {
 	 */
 	public int checkCurrSate() {
 
+		boolean free = false;
 		for (int x = 0; x < 3; x++) {
 			for (int y = 0; y < 3; y++) {
 				// check win condition
+				if (!free && grid[x][y].get() == -1) {
+					free = true;
+				}
 				if (checkStraight(x,y) || checkDiagonal(x,y)) {
 					//if won
 					int current = grid[x][y].get();
 					return current;
 				}
 			}
+		}
+		if (!free) {
+			return 2;
 		}
 		return -1;
 		
