@@ -6,26 +6,30 @@ public class Game {
 	
 	private Board board;
 	private int moves;
-	public Game () {
+	int humanPlayer;
+	
+	int AIplayer;
+	public Game (int player) {
 		this.board = new Board();
 		moves = 0;
+		humanPlayer = player;
+		AIplayer = (player + 1) % 2;
+		
 	}
 	
 	public void terminateGame (int x, int y) {
-		if (board.checkCurrSate(x, y)) {
+		if (board.checkCurrSate(x, y) != -1) {
 			System.out.println("Stop");
 		}
 	}
 	
 	public boolean setX(int x, int y) {
 		boolean check = board.setX(x, y);
-		terminateGame(x, y);
 		return check;
 	}
 	
 	public boolean setO(int x, int y) {
 		boolean check = board.setO(x, y);
-		terminateGame(x, y);
 		return check;
 	}
 	
@@ -50,9 +54,39 @@ public class Game {
 		return check;
 	}
 	
-	public IntegerProperty getproperty (int x, int y) {
-		return board.getproperty(x, y);
+	public void setVal(int x, int y, int player) {
+		if (player == 0) {
+			board.setO(x, y);
+		}
+		else {
+			board.setX(x, y);
+		}
 	}
 	
+	public int getVal (int x, int y) {
+		return board.getCoordinate(x,y);
+	}
+	
+	public int checkVictory(int x, int y) {
+		return board.checkCurrSate(x, y);
+	}
+	
+	public int getHumanPlayer() {
+		return humanPlayer;
+	}
+
+	public void setHumanPlayer(int humanPlayer) {
+		this.humanPlayer = humanPlayer;
+	}
+
+	public int getAIplayer() {
+		return AIplayer;
+	}
+
+	public void setAIplayer(int aIplayer) {
+		AIplayer = aIplayer;
+	}
+
+ 	
 
 }
