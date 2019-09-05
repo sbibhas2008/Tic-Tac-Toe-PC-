@@ -59,35 +59,24 @@ public class Board {
 	 * 				 0 if game won by O
 	 * 				-1 otherwise
 	 */
-	public int checkCurrSate(int x, int y) {
+	public int checkCurrSate() {
 
-		// temporary to remove error highlights
-		boolean free = false;
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				if (grid[i][j].get() == -1) {
-					free = true;
-					break;
+		for (int x = 0; x < 3; x++) {
+			for (int y = 0; y < 3; y++) {
+				// check win condition
+				if (checkStraight(x,y) || checkDiagonal(x,y)) {
+					//if won
+					int current = grid[x][y].get();
+					return current;
 				}
 			}
-			if (free) break;
 		}
-		boolean won = false;
-		// check win condition
-		if (checkStraight(x,y) || checkDiagonal(x,y)) {
-			won = true;
-		}
-		
-		if (!won || (!free)) {
-			return -1;
-		}
-		return grid[x][y].get();
+		return -1;
 		
 	}
 	
 	private boolean checkStraight(int x, int y) {
 		int current = grid[x][y].get();
-		if (current == -1) return false;
 		//vertical
 		boolean match = true;
 		int c = 0;
@@ -119,7 +108,6 @@ public class Board {
 	
 	private boolean checkDiagonal(int x, int y) {
 		int current = grid[x][y].get();
-		if (current == -1) return false;
 		if (y == 1 && (x == 0 || y == 2)) {
 			return false;
 		} else if (x == 1 && (y == 0 || y == 1)) {

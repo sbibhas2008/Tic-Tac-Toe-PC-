@@ -67,8 +67,8 @@ public class Game {
 		return board.getCoordinate(x,y);
 	}
 	
-	public int checkVictory(int x, int y) {
-		return board.checkCurrSate(x, y);
+	public int checkVictory() {
+		return board.checkCurrSate();
 	}
 	
 	public int getHumanPlayer() {

@@ -9,38 +9,35 @@ public class TestClass {
 	
 	@Test
 	public void checkBoardDiagonal() {
-		Board board = new Board();
-		Game game = new Game();
-		assert board.checkCurrSate(0, 0) == false;
+		Game game = new Game(0);
+		assert game.checkVictory() == -1;
 		assert game.setO(0, 0) == true;
 		assert game.setX(0, 0) == false;
 		assert game.setO(1, 1) == true;
 		assert game.setO(2, 2) == true;
-		assert board.checkCurrSate(0, 0) == true;
+		assert game.checkVictory() == 0;
 	}
 	
 	@Test
 	public void checkBoardStraight() {
-		Board board = new Board();
-		Game game = new Game();
-		assert board.checkCurrSate(0, 0) == false;
+		Game game = new Game(0);
+		assert game.checkVictory() == -1;
 		assert game.setO(0, 0) == true;
 		assert game.setX(0, 0) == false;
 		assert game.setO(0, 1) == true;
 		assert game.setO(0, 2) == true;
-		assert board.checkCurrSate(0, 2) == true;
+		assert game.checkVictory() == 0;
 	}
 	
 	@Test
 	public void checkBoardDiagonalOpposite() {
-		Board board = new Board();
-		Game game = new Game();
-		assert board.checkCurrSate(0, 0) == false;
+		Game game = new Game(0);
+		assert game.checkVictory() == -1;
 		assert game.setO(2, 0) == true;
 		assert game.setX(2, 0) == false;
 		assert game.setO(1, 1) == true;
 		assert game.setO(0, 2) == true;
-		assert board.checkCurrSate(0, 2) == true;
+		assert game.checkVictory() == 0;
 	}
 	
 
