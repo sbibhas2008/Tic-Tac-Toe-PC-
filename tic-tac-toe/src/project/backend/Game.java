@@ -1,5 +1,7 @@
 package project.backend;
 
+import java.util.ArrayList;
+
 import javafx.beans.property.IntegerProperty;
 
 public class Game {
@@ -7,18 +9,35 @@ public class Game {
 	private Board board;
 	private int moves;
 	int humanPlayer;
-	
 	int AIplayer;
+	AI ai;
+	
+	public AI getAi() {
+		return ai;
+	}
+
+	public void setAi(AI ai) {
+		this.ai = ai;
+	}
+
 	public Game (int player) {
 		this.board = new Board();
+		this.ai = new AI(this);
 		moves = 0;
 		humanPlayer = player;
 		AIplayer = (player + 1) % 2;
 		
 	}
 	
-	public void terminateGame (int x, int y) {
-		if (board.checkCurrSate(x, y) != -1) {
+	public Game () {
+		this.board = new Board();
+		moves = 0;
+		humanPlayer = 0;
+		AIplayer = 1;
+	}
+	
+	public void terminateGame () {
+		if (board.checkCurrSate() != -1) {
 			System.out.println("Stop");
 		}
 	}
@@ -33,25 +52,69 @@ public class Game {
 		return check;
 	}
 	
-	public int setMove (int x, int y) {
-		int check = board.getCoordinate(x, y);
-		if (this.moves % 2 == 0) {
-			boolean see = board.setO(x, y);
-			if (see) {
-				check = board.getCoordinate(x, y);
-				moves++;
-			}
+	// returns (x,y,move) as tuple
+	public ArrayList<Integer> setMove (int x, int y) {
+		ArrayList<Integer> tuple = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
+			tuple.add(i, -1);
 		}
+		tuple.add(2, board.getCoordinate(x, y));
+		if (this.ai == null) {
+			if (this.moves % 2 == 0) {
+				boolean see = board.setX(x, y);
+				if (see) {
+					tuple.add(2,board.getCoordinate(x, y));
+					moves++;
+				}
+			}
+			else if (this.moves % 2 == 1) {
+				boolean see = board.setO(x, y);
+				if (see) {
+					tuple.add(2,board.getCoordinate(x, y));
+					moves++;
+				}
+			}
+			terminateGame();
+			return tuple;
+		}
+		// if ai is playing
 		else {
-			boolean see = board.setX(x, y);
-			if (see) {
-				check = board.getCoordinate(x, y);
-				moves++;
+			if (this.moves % 2 == 0) {
+				if (AIplayer == 1) {
+					AIMove move = ai.performMove();
+					moves++;
+					tuple.add(0, move.getX());
+					tuple.add(1, move.getY());
+					tuple.add(2, 1);
+				}
+				else  {
+					boolean see = board.setX(x, y);
+					if (see) {
+						tuple.add(2,board.getCoordinate(x, y));
+						moves++;
+					}
+				}
+			}
+			else {
+				if (AIplayer == 0) {
+					ai.performMove();
+					moves++;
+					AIMove move = ai.performMove();
+					tuple.add(0, move.getX());
+					tuple.add(1, move.getY());
+					tuple.add(2, 0);
+				}
+				else  {
+					boolean see = board.setO(x, y);
+					if (see) {
+						tuple.add(2,board.getCoordinate(x, y));
+						moves++;
+					}
+				}
+				
 			}
 		}
-		
-		terminateGame(x, y);
-		return check;
+		return tuple;
 	}
 	
 	public void setVal(int x, int y, int player) {
@@ -85,6 +148,10 @@ public class Game {
 
 	public void setAIplayer(int aIplayer) {
 		AIplayer = aIplayer;
+	}
+	
+	public void showBoard() {
+		board.showBoard();
 	}
 
  	
