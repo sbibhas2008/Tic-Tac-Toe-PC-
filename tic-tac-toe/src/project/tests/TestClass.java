@@ -40,5 +40,19 @@ public class TestClass {
 		assert game.checkVictory() == 0;
 	}
 	
+	@Test
+	public void checkDraw() {
+		Game game = new Game(0);
+		assert game.setO(0,0) == true;
+		assert game.setX(0,1) == true;
+		assert game.setO(0,2) == true;
+		assert game.setX(1,0) == true;
+		assert game.setO(1,1) == true;
+		assert game.setX(1,2) == true;
+		assert game.setX(2,0) == true;
+		assert game.setO(2,1) == true;
+		assert game.setX(2,2) == true;
+		assert game.checkVictory() == 2;
+	}
 
 }
