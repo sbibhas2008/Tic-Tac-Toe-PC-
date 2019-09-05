@@ -97,7 +97,6 @@ public class Game {
 			}
 			else {
 				if (AIplayer == 0) {
-					ai.performMove();
 					moves++;
 					AIMove move = ai.performMove();
 					tuple.add(0, move.getX());
@@ -114,6 +113,8 @@ public class Game {
 				
 			}
 		}
+		System.out.println(moves);
+		terminateGame();
 		return tuple;
 	}
 	
@@ -121,8 +122,11 @@ public class Game {
 		if (player == 0) {
 			board.setO(x, y);
 		}
-		else {
+		else if (player == 1){
 			board.setX(x, y);
+		}
+		else {
+			board.setNone(x, y);
 		}
 	}
 	

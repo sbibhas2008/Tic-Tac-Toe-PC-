@@ -158,5 +158,9 @@ public class Board {
 			System.out.print("\n");
 		}
 	}
+	
+	public void setNone(int x, int y) {
+		grid[x][y].set(-1);
+	}
 
 }

@@ -5,14 +5,16 @@ import java.util.ArrayList;
 public class AI {
 	
 	
+	Game temp;
 	Game game;
 	
 	public AI (Game game) {
-		this.game = game;
+		this.temp = game;
+		this.game = temp;
 	}
 	
 	public AIMove performMove() {
-		AIMove bestMove = miniMax(3, game.getAIplayer());
+		AIMove bestMove = miniMax(1, game.getAIplayer());
 		game.setVal(bestMove.getX(), bestMove.getY(), game.getAIplayer());
 		return bestMove;
 	}
@@ -27,12 +29,10 @@ public class AI {
 		else if (game.checkVictory() == game.getHumanPlayer()) {
 			return new AIMove(depth - 10);
 		}
-		else if (game.checkVictory() == -1) {
+		else if (game.checkVictory() == 2) {
 			return new AIMove(0);
 		}
 		depth += 1;
-		System.out.println("Here");
-
 		ArrayList<AIMove> moves  = new ArrayList<>();
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 3; x++) {
