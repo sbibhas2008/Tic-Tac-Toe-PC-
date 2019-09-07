@@ -54,7 +54,7 @@ public class Game {
 	
 	// returns (x,y,move) as tuple
 	public ArrayList<Integer> setMove (int x, int y) {
-		ArrayList<Integer> tuple = new ArrayList<>();
+		ArrayList<Integer> tuple = new ArrayList<>(3);
 		for (int i = 0; i < 3; i++) {
 			tuple.add(i, -1);
 		}
