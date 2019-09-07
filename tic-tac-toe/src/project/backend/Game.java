@@ -36,10 +36,8 @@ public class Game {
 		AIplayer = 1;
 	}
 	
-	public void terminateGame () {
-		if (board.checkCurrSate() != -1) {
-			System.out.println("Stop");
-		}
+	public int terminateGame () {
+		return board.checkCurrSate();
 	}
 	
 	public boolean setX(int x, int y) {
@@ -114,7 +112,7 @@ public class Game {
 			}
 		}
 		System.out.println(moves);
-		terminateGame();
+//		terminateGame();
 		return tuple;
 	}
 	

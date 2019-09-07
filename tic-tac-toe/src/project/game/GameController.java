@@ -57,6 +57,7 @@ public class GameController {
     			         else if (move.get(2) == 1) {
     			        	 source.setImage(cross);
     			         }
+    			         
     			         if (game.getAi() != null) {
     			        	 move = game.setMove(0, 0);
         			         if (move.get(2) == 0) {
@@ -69,6 +70,14 @@ public class GameController {
         			        	 getBoard().add(img, move.get(0), move.get(1));
         			        	 adjustImage(img);
         			         }
+//        			         int s = game.terminateGame();
+//        			         if (s != -1) {
+//        			        	 EndGame.display(s);
+//        			         }
+    			         }
+    			         int s = game.terminateGame();
+    			         if (s != -1) {
+    			        	 EndGame.display(s);
     			         }
     			         game.showBoard();
     			         event.consume();
@@ -88,6 +97,10 @@ public class GameController {
     	}
     	if (game.getAi() != null && game.getAIplayer() == 1) {
 			ArrayList<Integer> move = game.setMove(0, 0);
+			int s = game.terminateGame();
+			if (s != -1) {
+				EndGame.display(s);
+			}
 			this.Board.add(new ImageView(cross), move.get(0), move.get(1));
 		}
     	 game.showBoard();
