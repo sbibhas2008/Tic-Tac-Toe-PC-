@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class EndGame {
 	
@@ -16,6 +17,7 @@ public class EndGame {
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle("Game Over");
 		window.setMinWidth(250);
+		window.initStyle(StageStyle.UNDECORATED);
 		
 		String message;
 		if (status == 1) {
