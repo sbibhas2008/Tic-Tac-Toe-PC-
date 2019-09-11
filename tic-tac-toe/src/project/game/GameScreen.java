@@ -14,7 +14,7 @@ public class GameScreen {
 	
 	public GameScreen(Stage stage) {
 		this.stage = stage;
-		controller = new GameController();
+		controller = new GameController(stage);
 	}
 	
 	public void start(int mode) throws IOException {

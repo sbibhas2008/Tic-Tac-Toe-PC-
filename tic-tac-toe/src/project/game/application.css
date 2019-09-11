@@ -1,1 +1,27 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.btn {
+    -fx-background-color: silver;
+    -fx-text-fill: white;
+}
+
+.btn:hover {
+    -fx-background-color: rgb(7, 13, 92);
+}
+
+.toggle-button {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border,
+        -fx-inner-border, -fx-body-color;
+    -fx-text-fill: -fx-text-base-color;
+}
+
+.toggle-button:selected {
+    -fx-background-color: grey;
+    -fx-color:white;
+}
+
+.img {
+	 -fx-background-image: url("baseline_arrow_back_black_18dp.png");
+	 -fx-background-color: #f3f1f1;
+   	  -fx-text-fill: black;
+}

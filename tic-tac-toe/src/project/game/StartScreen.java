@@ -24,6 +24,8 @@ public class StartScreen {
 		
 		Parent root = loader.load();
 		scene = new Scene(root);
+		String css = this.getClass().getResource("application.css").toExternalForm(); 
+		scene.getStylesheets().add(css);
 	}
 	
 	public void start() {
