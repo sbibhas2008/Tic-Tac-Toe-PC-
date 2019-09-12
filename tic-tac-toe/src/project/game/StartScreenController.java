@@ -12,16 +12,15 @@ public class StartScreenController {
 	
 	private GameScreen game;
 	private boolean playFirst;
+	private String difficulty;
 	
 	StartScreenController() {
 		this.playFirst = false;
+		this.difficulty = "easy";
 	}
 
     @FXML
     private Button AiBtn;
-
-    @FXML
-    private RadioButton mediumBtn;
 
     @FXML
     private RadioButton impossibleBtn;
@@ -38,33 +37,29 @@ public class StartScreenController {
     @FXML
     void againstAI(ActionEvent event) throws IOException {
     	if (playFirst) {
-    		game.start(1);
+    		game.start(1, difficulty);
     	}
     	else {
-    		game.start(0);
+    		game.start(0, difficulty);
     	}
     }
 
     @FXML
     void againstPlayer(ActionEvent event) throws IOException {
-    	game.start(-1);
+    	game.start(-1, difficulty);
     }
 
     @FXML
     void handleEasyBtn(ActionEvent event) {
-    	
+    	this.difficulty = "easy";
     }
 
     @FXML
     void handleImpossibleBtn(ActionEvent event) {
-
+    	this.difficulty = "impossible";
     }
 
-    @FXML
-    void handleMediumBtn(ActionEvent event) {
-
-    }
-
+  
     @FXML
     void playFirst(ActionEvent event) {
     	playFirst = true;

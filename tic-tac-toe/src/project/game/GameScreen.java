@@ -17,8 +17,8 @@ public class GameScreen {
 		controller = new GameController(stage);
 	}
 	
-	public void start(int mode) throws IOException {
-		controller.setMode(mode);
+	public void start(int mode, String difficulty) throws IOException {
+		controller.setMode(mode, difficulty);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("scene.fxml"));
         loader.setController(controller);
         Parent root = loader.load();

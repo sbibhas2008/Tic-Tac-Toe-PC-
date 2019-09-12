@@ -20,9 +20,14 @@ public class Game {
 		this.ai = ai;
 	}
 
-	public Game (int player) {
+	public Game (int player, String difficulty) {
 		this.board = new Board();
-		this.ai = new AI(this);
+		if (difficulty.equals("easy")) {
+			this.ai = new EasyAI(this);
+		}
+		else if (difficulty.equals("impossible")) {
+			this.ai = new ImpossibleAI(this);
+		}
 		moves = 0;
 		humanPlayer = player;
 		AIplayer = (player + 1) % 2;

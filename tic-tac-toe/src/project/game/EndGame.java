@@ -14,7 +14,7 @@ import javafx.stage.StageStyle;
 public class EndGame {
 	
 	static int mode;
-	
+	static String difficulty;
 	
 	public static void display(int status, Stage stage) throws IOException {
 		Stage window = new Stage();
@@ -43,7 +43,7 @@ public class EndGame {
 			window.close();
 			GameScreen g = new GameScreen(stage);
 			try {
-				g.start(mode);
+				g.start(mode, difficulty);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -60,7 +60,8 @@ public class EndGame {
 		window.showAndWait();
 	}
 	
-	public static void setMode(int m) {
+	public static void setMode(int m, String difficulty) {
 		EndGame.mode = m;
+		EndGame.difficulty = difficulty;
 	}
 }

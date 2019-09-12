@@ -9,13 +9,12 @@
 
 <Pane prefHeight="401.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <RadioButton fx:id="mediumBtn" layoutX="92.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleMediumBtn" text="Medium">
+      <RadioButton fx:id="impossibleBtn" layoutX="89.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleImpossibleBtn" stylesheets="@application.css" text="Impossible">
          <toggleGroup>
             <ToggleGroup fx:id="Difficulty" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="impossibleBtn" layoutX="89.0" layoutY="201.0" mnemonicParsing="false" onAction="#handleImpossibleBtn" stylesheets="@application.css" text="Impossible" toggleGroup="$Difficulty" />
-      <RadioButton fx:id="easyBtn" layoutX="92.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleEasyBtn" text="Easy" toggleGroup="$Difficulty" />
+      <RadioButton fx:id="easyBtn" layoutX="92.0" layoutY="157.0" mnemonicParsing="false" onAction="#handleEasyBtn" selected="true" text="Easy" toggleGroup="$Difficulty" />
       <Button fx:id="playerBtn" layoutX="385.0" layoutY="264.0" mnemonicParsing="false" onAction="#againstPlayer" styleClass="btn" stylesheets="@application.css" text="2 Player" />
       <ToggleButton fx:id="toggleBtn" layoutX="92.0" layoutY="83.0" mnemonicParsing="false" onAction="#playFirst" text="First Move" />
       <Button fx:id="AiBtn" layoutX="128.0" layoutY="264.0" mnemonicParsing="false" onAction="#againstAI" styleClass="btn" stylesheets="@application.css" text="1 Player" />

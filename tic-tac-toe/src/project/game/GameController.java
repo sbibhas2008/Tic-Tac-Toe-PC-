@@ -130,14 +130,14 @@ public class GameController {
     	return this.Board;
     }
     
-    public void setMode(int mode) {
+    public void setMode(int mode, String difficulty) {
     	if (mode == -1) {
     		game = new Game();
-    		 EndGame.setMode(mode);
+    		 EndGame.setMode(mode, difficulty);
     	}
     	else {
-    		game = new Game(mode);
-   		 	EndGame.setMode(mode);
+    		game = new Game(mode, difficulty);
+   		 	EndGame.setMode(mode, difficulty);
 
     	}
     }

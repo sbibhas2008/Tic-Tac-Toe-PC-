@@ -2,22 +2,16 @@ package project.backend;
 
 import java.util.ArrayList;
 
-public class AI {
+public abstract class AI {
 	
 	
-	Game temp;
 	Game game;
 	
 	public AI (Game game) {
-		this.temp = game;
-		this.game = temp;
+		this.game = game;
 	}
 	
-	public AIMove performMove() {
-		AIMove bestMove = miniMax(1, game.getAIplayer());
-		game.setVal(bestMove.getX(), bestMove.getY(), game.getAIplayer());
-		return bestMove;
-	}
+	public abstract AIMove performMove();
 	
 	// perform a minimax search of depth 3
 	public AIMove miniMax(int depth, int player) {
